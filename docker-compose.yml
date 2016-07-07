@@ -5,23 +5,28 @@ storage:
   volumes:
     # These are sharable to other containers
     - ./settings:/home/settings
-    - /home/import_done
-    - /home/import_queue
-    - /home/cache
-    #- ./import_done:/home/import_done
-    #- ./import_queue:/home/import_queue
-    #- ./cache:/home/cache
+    #- /home/import_done
+    #- /home/import_queue
+    #- /home/cache
+    - ./import_done:/home/import_done
+    - ./import_queue:/home/import_queue
+    - ./cache:/home/cache
 
 db:
   # About the postgresql version, it should match in the dockerfile of docker-imposm3
-  image: kartoza/postgis:9.4-2.1
+  image: camptocamp/postgresql:pg9.5-latest
   container_name: dockerosm_db
   hostname: db
   environment:
-    - USERNAME=docker
-    - PASS=docker
+    POSTGRES_USER: docker
+    POSTGRES_PASS: docker
+    POSTGRES_DB: gis
   volumes_from:
     - storage
+  volumes:
+    - ./db:/var/lib/postgresql/data
+  ports:
+    - 15432:5432
 
 imposm:
   build: docker-imposm3

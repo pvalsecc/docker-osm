@@ -7,3 +7,6 @@ settings/*.pbf
 BACKUP-STYLES.sql
 settings/last.state.txt
 settings/timestamp.txt
+settings/country.poly
+settings/country.state.txt
+settings/custom_url_diff.txt
