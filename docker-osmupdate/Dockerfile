@@ -1,5 +1,5 @@
 #--------- Generic stuff all our Dockerfiles should start with so we get caching ------------
-FROM ubuntu:latest
+FROM ubuntu:18.04
 MAINTAINER Etienne Trimaille<etienne@kartoza.com>
 
 RUN  export DEBIAN_FRONTEND=noninteractive
@@ -18,7 +18,7 @@ RUN apt-get -y install ca-certificates rpl pwgen
 #-------------Application Specific Stuff ----------------------------------------------------
 
 # Install osmupdate
-RUN apt-get -y install osmctools wget gzip gcc libc-dev zlib1g-dev
+RUN apt-get -y install osmctools wget gzip gcc libc-dev zlib1g-dev python
 WORKDIR /home
 ADD osmupdate.c /home/osmupdate.c
 ADD osmconvert.c /home/osmconvert.c
