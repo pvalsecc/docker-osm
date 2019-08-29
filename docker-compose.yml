@@ -14,7 +14,7 @@ storage:
 
 db:
   # About the postgresql version, it should match in the dockerfile of docker-imposm3
-  image: camptocamp/postgresql:pg9.5-latest
+  image: camptocamp/postgres:9.5
   container_name: dockerosm_db
   hostname: db
   environment:
