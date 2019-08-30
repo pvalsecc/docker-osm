@@ -13,8 +13,7 @@ storage:
     - ./cache:/home/cache
 
 db:
-  # About the postgresql version, it should match in the dockerfile of docker-imposm3
-  image: camptocamp/postgres:9.5
+  build: postgres
   container_name: dockerosm_db
   hostname: db
   environment:
